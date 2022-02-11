@@ -1,0 +1,50 @@
+#N canvas 93 274 819 451 12;
+#X obj 394 162 netsend -u -b;
+#X msg 403 136 connect localhost 30003;
+#X obj 403 115 loadbang;
+#X obj 394 70 list prepend send;
+#X obj 394 92 list trim;
+#X obj 20 14 hsl 512 15 0 1 0 0 empty empty empty -2 -8 0 10 -4034
+-1 -1 11700 1;
+#X obj 18 213 oscformat play;
+#X obj 406 40 r sendosc;
+#X obj 18 266 s sendosc;
+#X msg 18 178 1;
+#X obj 19 326 oscformat play;
+#X obj 19 355 s sendosc;
+#X msg 19 291 1;
+#X msg 53 178 2;
+#X obj 127 179 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 127 214 oscformat stop;
+#X obj 233 183 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 233 214 oscformat -f i pause;
+#X obj 17 91 s sendosc;
+#X obj 17 68 oscformat -f fi scrub;
+#X obj 17 33 pack 0 5;
+#X floatatom 89 33 5 0 0 0 - - -;
+#X obj 230 268 hsl 512 15 0 1 0 0 empty empty empty -2 -8 0 10 -4034
+-1 -1 20200 1;
+#X obj 227 317 s sendosc;
+#X obj 227 294 oscformat -f f setpos;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
+#X connect 3 0 4 0;
+#X connect 4 0 0 0;
+#X connect 5 0 20 0;
+#X connect 6 0 8 0;
+#X connect 7 0 3 0;
+#X connect 9 0 6 0;
+#X connect 10 0 11 0;
+#X connect 12 0 10 0;
+#X connect 13 0 6 0;
+#X connect 14 0 15 0;
+#X connect 15 0 8 0;
+#X connect 16 0 17 0;
+#X connect 17 0 8 0;
+#X connect 19 0 18 0;
+#X connect 20 0 19 0;
+#X connect 21 0 20 1;
+#X connect 22 0 24 0;
+#X connect 24 0 23 0;
