@@ -1,4 +1,16 @@
-OSC Video Player
+# OSC Video Player
+
+The video playback is organized in slots. Each slot can load a specific video file.
+and there is only one slot visible at any time. Playback is organized following the
+paradigm of a stack: if slot 1 is playing and playback for slot 2 is
+triggered, slot 2 starts playing and takes over the display. If slot 1 keeps playing
+and slot 2 is stopped, the display returns to slot 1.
+
+Every aspect of playback (start, stop, speed, position) can be controlled via 
+OSC. Scripts can also be loaded via OSC. Alternatively a folder can be loaded
+either via OSC or from the command line. In that case, clips in the folder must
+be organized as shown below, where each clip has a prefix indicating the slot
+where it should be loaded.
 
 ## Load all clips from a folder
 
@@ -17,7 +29,6 @@ OSC-Video-Player --folder $(realpath media)
 
 This will load each clip to the specified slot (1, 2, 4 in this case)
 
-The clips can be played at any speed, stopped, paused, scrubbed, etc.
 
 ## OSC Api
 
@@ -27,7 +38,7 @@ NB: this information might be out of date. To print the current OSC api, do `OSC
 OSC messages accepted:
 
 /load slot:int path:str
-    * Load a video at the given slot
+    * Load a video at the given slot. The path must be absolute
 
 /play slot:int [speed:float=1] [starttime:float=0] [paused:int=0] [stopWhenFinished:int=1]
     * Play the given slot with given speed, starting at starttime (secs)
