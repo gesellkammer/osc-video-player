@@ -24,6 +24,8 @@ The clips can be played at any speed, stopped, paused, scrubbed, etc.
 NB: this information might be out of date. To print the current OSC api, do `OSC-Video-Player --man`
 
 ```
+OSC messages accepted:
+
 /load slot:int path:str
     * Load a video at the given slot
 
@@ -34,8 +36,8 @@ NB: this information might be out of date. To print the current OSC api, do `OSC
       stopWhenFinished: if 1, playback will stop at the end, otherwise it
         pauses at the last frame
 
-/stop
-    * Stop playback
+/stop [slot:int]
+    * Stop playback. If no slot is given, the currently playing slot is stopped
 
 /pause state:int
     * If state 1, pause playback, 0 resumes playback
@@ -64,6 +66,15 @@ NB: this information might be out of date. To print the current OSC api, do `OSC
 
 /quit
     * Quit this application
+
+
+Keyboard Shortcuts
+==================
+
+F - Toggle Fullscreen
+D - Dump Information about loaded clips
+Q - Quit
+
 ```
 
 
@@ -73,13 +84,18 @@ NB: this information might be out of date. To print the current OSC api, do `OSC
 
 USAGE:
 
-   OSC-Video-Player  [-o <string>] [-m] [-d] [-p <int>] [-f <string>]
-                     [-n <int>] [--] [--version] [-h]
+   bin/OSC-Video-Player  [-r <int>] [-o <string>] [-m] [-d] [-p <int>] [-f
+                         <string>] [-n <int>] [--] [--version] [-h]
+
 
 Where:
 
+   -r <int>,  --framerate <int>
+     Frame Rate
+
    -o <string>,  --oscout <string>
-     OSC host:port to send information to
+     [host:]port (for ex. '127.0.0.1:9998', or simply '9998') to send
+     information to
 
    -m,  --man
      Print manual and exit
@@ -88,13 +104,13 @@ Where:
      debug mode
 
    -p <int>,  --port <int>
-     OSC port to listen to (default: 30003)
+     OSC port to listen to
 
    -f <string>,  --folder <string>
      Load all videos from this folder
 
    -n <int>,  --numslots <int>
-     Max. number of video slots (default: 50)
+     Max. number of video slots
 
    --,  --ignore_rest
      Ignores the rest of the labeled arguments following this flag.
@@ -105,6 +121,8 @@ Where:
    -h,  --help
      Displays usage information and exits.
 
+
+   OSC Video Player
 ```
 
 ## Build
