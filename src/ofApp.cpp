@@ -136,7 +136,9 @@ bool ofApp::playClip(size_t slot, float speed, float skiptime, bool startPaused,
     paused[slot] = startPaused;
     shouldStop[slot] = stopWhenFinished;
     auto & mov = movs[slot];
-    mov.setSpeed(speed);
+    if(mov.getSpeed() != speed) {
+        mov.setSpeed(speed);
+    }
     mov.setPaused(startPaused);
     auto dur = mov.getDuration();
     if(dur <= 0.01) {
@@ -157,7 +159,7 @@ bool ofApp::playClip(size_t slot, float speed, float skiptime, bool startPaused,
     drawclip[slot] = true;
     calculateDrawCoords();
     stack.push_back(slot);
-    mov.play();
+    // mov.play();
 
     INFO << "/play - slot:" << slot
          << ", speed:" << speed
